@@ -52,10 +52,6 @@ body {
     cursor: pointer;
 }
 
-.entrar .button:hover {
-    background-color: rgb(140, 140, 140);
-}
-
 .none {
     display: none;
 }
