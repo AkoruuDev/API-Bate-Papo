@@ -1,0 +1,40 @@
+Proposta feita por
+    Driven
+Numero do projeto
+    5
+Wakatime
+    projeto5-batepapouol
+
+GitHub
+    Repositório
+        https://github.com/AkoruuDev/API-Bate-Papo
+    Deploy
+        https://akoruudev.github.io/API-Bate-Papo/
+
+Desenvolvedor
+    Akoruu Dev
+    https://github.com/akoruudev/
+    https://linkedin.com/in/akoruudev/
+
+Database
+    Projeto
+        Data de Inicio
+            21-06-2022
+        Data de finalização
+            --/--/----
+        Data de entrega
+            27-06-2022
+        Produção
+            00:00:00:00
+
+Tecnologias
+    HTML 5
+    CSS 3
+    JavaScript
+
+Integrações
+    fonts
+        ---
+
+    Ion-icons
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

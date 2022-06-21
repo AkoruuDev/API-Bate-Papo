@@ -1,0 +1,66 @@
+Implementação de um bate-papo totalmente funcional, inspirado no saudoso Bate-Papo UOL. Mas não seguiu o site real da UOL como referência, pois apesar de inspirado nele, essa interface é totalmente diferente :)
+
+[API Chat UOL
+    (https://www.notion.so/API-Chat-UOL-18842d1f9a264729a14142f2e9c3b154)
+
+# Requisitos
+
+- Geral
+    - [ ]  Não utilize nenhuma biblioteca para implementar este projeto (jquery, lodash, react, etc), nem outras linguagens que compilem para JS (TypeScript, Clojure, ELM, etc), somente JavaScript puro
+    - [ ]  Seu projeto deverá ser desenvolvido utilizando Git e GitHub, em um repositório público
+    - [ ]  **A cada requisito implementado** faça um commit com uma mensagem descritiva do que você evoluiu
+
+- Layout
+    - [ ]  Aplicar layout para mobile, seguindo figma abaixo. Não é necessário implementar uma versão para desktop.
+        [](https://github.com/AkoruuDev/API-Bate-Papo/tree/main/docs/layout)
+        []./layout
+    
+- Chat
+    - [ ]  Ao entrar no site, este deve carregar as mensagens do servidor e exibi-las conforme layout fornecido
+    - [ ]  Existem 3 tipos de mensagem:
+        - Mensagens de status (**Entrou** ou **Saiu** da sala): deve ter o fundo cinza
+        - Mensagens reservadas (**Reservadamente**): deve ter o fundo rosa
+        - Mensagens normais: devem ter o fundo branco
+    - [ ]  A cada 3 segundos o site deve re-carregar as mensagens do servidor para manter sempre atualizado
+    - [ ]  O chat deverá ter rolagem automática por padrão, ou seja, sempre que novas mensagens forem adicionadas ao final do chat ele deve scrollar para o final
+        
+        **Dica**: Você pode fazer com que um elemento apareça na tela utilizando a função `scrollIntoView`:
+        
+        ||=============================================================================||
+        ||   const elementoQueQueroQueApareca = document.querySelector('.mensagem');   ||
+        ||   elementoQueQueroQueApareca.scrollIntoView();                              ||
+        ||=============================================================================||
+        
+        Se `elementoQueQueroQueApareca` estiver dentro de um elemento scrollável, o elemento será scrollado para que o `elementoQueQueroQueApareca` fique visível.
+        
+    - [ ]  As mensagens com **Reservadamente** só devem ser exibidas se o nome do destinatário for igual ao nome do usuário que está usando o chat (ou senão ele poderia ver as mensagens reservadas para outras pessoas)
+        - Obs: Fazer essa filtragem no front-end não é uma boa prática, o ideal seria o servidor não fornecer essas mensagens para outras pessoas. Manteremos dessa forma por fins didáticos :)
+    
+- Entrada na sala
+    - [ ]  Ao entrar no site, o usuário deverá ser perguntado com um `prompt` ****seu lindo nome
+    - [ ]  Após inserção do nome, este deve ser enviado para o servidor pra cadastrar o usuário
+        - Caso o servidor responda com sucesso, o usuário poderá entrar na sala
+        - Caso o servidor responda com erro, deve-se pedir para o usuário digitar outro nome, pois este já está em uso
+    - [ ]  Enquanto o usuário estiver na sala, a cada 5 segundos o site deve avisar ao servidor que o usuário ainda está presente, ou senão será considerado que "Saiu da sala"
+
+- Envio de mensagem
+    - [ ]  Ao enviar uma mensagem, esta deve ser enviada para o servidor
+        - Caso o servidor responda com sucesso, você deve obter novamente as mensagens do servidor e atualizar o chat
+        - Caso o servidor responda com erro, significa que esse usuário não está mais na sala e a página deve ser atualizada (e com isso voltando pra etapa de pedir o nome)
+            
+            **Dica**: experimente usar `window.location.reload()`
+            
+    - [ ]  Nesse envio, deve ser informado o remetente, o destinatário e se a mensagem é reservada ou não.
+        - Escolher um destinário e se a mensagem é reservada ou pública é um **requisito bônus**. Logo, se você não implementar o bônus, sempre envie destinatário como **Todos** e a mensagem como **pública**.
+        ver bonus em
+            ../docs/bonus.txt
+            https://github.com/AkoruuDev/API-Bate-Papo/blob/main/docs/bonus.txt
+
+- **Para facilitar a correção do projeto** 🙂
+        
+        Para agilizarmos a correção dos projetos e dar um feedback mais rápido para vocês, adicione o que está sendo pedido abaixo nos seus elementos:
+        
+        - Nos elementos que representam um participante, adicione o atributo `data-identifier="participant"`
+        - Nos elementos que identificam a visibilidade, adicione o atributo `data-identifier="visibility"`
+        
+        Com as configurações acima conseguimos automatizar parte da correção do projeto, acelerando o feedback.
