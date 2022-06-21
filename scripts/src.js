@@ -19,3 +19,18 @@ function irParaLogin() {
     paginaEntrar.classList.remove("none");
     paginaCadastro.classList.add("none")
 }
+
+function novoCadastro() {
+    let usuario = this.lerDados();
+
+    let novoUsuario = usuarios.length
+}
+
+function lerDados() {
+    let usuario = {};
+
+    usuario.nome = document.querySelector(".nome").value;
+    usuario.password = document.querySelector(".newpassword").value;;
+
+    return usuario;
+}
