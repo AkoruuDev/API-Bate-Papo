@@ -7,7 +7,8 @@
 
 body {
     font-size: sans-serif;
-    background-color: #fafafa;
+    background-color: var(--branco);
+    color: var(--preto);
 
     display: flex;
     justify-content: center;
@@ -15,9 +16,11 @@ body {
 
 .aplicativo-entrar {
     height: 50vw;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .entrar {
@@ -31,7 +34,21 @@ body {
 
 .entrar span {
     cursor: pointer;
-    color: blue;
+    color: var(--link);
+}
+
+.cadastro-concluido span {
+    cursor: pointer;
+    width: 200px;
+    height: 80px;
+
+    font-weight: 700;
+    background-color: var(--verde);
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .entrar input {
@@ -43,12 +60,12 @@ body {
     font-size: 25px;
 
     border: none;
-    background-color: rgb(236, 236, 236);
+    background-color: var(--input);
     border-radius: 50px;
 }
 
 .entrar .button {
-    background-color: rgb(219, 219, 219);
+    background-color: var(--button);
     cursor: pointer;
 }
 

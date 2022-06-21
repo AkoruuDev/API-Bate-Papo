@@ -57,7 +57,7 @@ function lerDados() {
 }
 
 function validarCadastro(novoUsuario) {
-    let msg = 'Preencha todos os campos.\nPor favor, informe:\n\n';
+    let msg = 'Preencha todos os campos.\nPor favor, preencha:\n\n';
     
     if (novoUsuario.nome == '') {
         msg += 'Seu nickname\n'
@@ -65,7 +65,18 @@ function validarCadastro(novoUsuario) {
     if (novoUsuario.password == '') {
         msg += 'Senha\n'
     }
-    if (novoUsuario.nome == '' || novoUsuario.password == '') {
+
+    let conferirSenha = document.querySelector(".repitpassword").value;
+    if (conferirSenha != '') {
+        if ((novoUsuario.nome != '') && conferirSenha == novoUsuario.password) {
+            return true;
+        } else {
+            msg = "As senhas não coicidem";
+        }
+    } else {
+        msg += 'Campo "Repita senha"'
+    }
+    if (novoUsuario.nome == '' || novoUsuario.password == '' || conferirSenha != novoUsuario.password) {
         alert(msg);
         return false;
     }
