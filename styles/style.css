@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-size: sans-serif;
+    background-color: #fafafa;
+
+    display: flex;
+    justify-content: center;
+}
+
+.aplicativo-entrar {
+    height: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.entrar {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrar span {
+    cursor: pointer;
+    color: blue;
+}
+
+.entrar input {
+    height: 80px;
+    width: 500px;
+    margin: 15px;
+    padding: 15px;
+
+    font-size: 25px;
+
+    border: none;
+    background-color: rgb(236, 236, 236);
+    border-radius: 50px;
+}
+
+.entrar .button {
+    background-color: rgb(219, 219, 219);
+    cursor: pointer;
+}
+
+.entrar .button:hover {
+    background-color: rgb(140, 140, 140);
+}
+
+.none {
+    display: none;
+}
