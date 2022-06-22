@@ -44,3 +44,4 @@ Integrações
         <ion-icon name="person-circle"></ion-icon>  <!-- Person -->
         <ion-icon name="lock-closed"></ion-icon> <!-- Lock closed -->
         <ion-icon name="lock-open"></ion-icon> <!-- lock open -->
+        <ion-icon name="checkmark-circle-outline"></ion-icon> <!-- Check -->
