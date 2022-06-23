@@ -16,10 +16,18 @@ body {
     justify-content: center;
 }
 
-.none {
-    display: none;
+.app {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
 }
 
-.color {
-    background-color: red;
+.none {
+    display: none;
 }

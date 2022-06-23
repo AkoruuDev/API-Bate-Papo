@@ -7,7 +7,6 @@
     <!--    Estilos     -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/colors.css">
-    <link rel="stylesheet" href="styles/responsive.css">
     <link rel="stylesheet" href="styles/hover.css">
     <link rel="stylesheet" href="styles/bonus.css">
     <!--    FavIcon     -->
@@ -15,47 +14,48 @@
     <title>Bate-Papo Uol</title>
 </head>
 <body>
-    <div class="aplicativo-entrar fazer-login">
-        <div class="login entrar">
-            <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
-            <input type="text" name="nome" class="nick-entrar" placeholder="Nickname">
-            <input type="password" name="password" class="pass-entrar" placeholder="Senha">
-            <input type="button" value="Entrar" class="entrar button">
-            <p>Não tem uma conta? <span onclick="irParaNovoCadastro()">cadastre-se aqui</span></p>
+    <div class="app">
+        <div class="aplicativo-entrar fazer-login">
+            <div class="login entrar">
+                <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
+                <input type="text" name="nome" class="nick-entrar" placeholder="Nickname">
+                <input type="password" name="password" class="pass-entrar" placeholder="Senha">
+                <input type="button" value="Entrar" class="entrar button">
+                <p>Não tem uma conta? <span onclick="irParaNovoCadastro()">cadastre-se aqui</span></p>
+            </div>
         </div>
-    </div>
-    <div class="aplicativo-entrar novo-cadastro none">
-        <div class="cadastro entrar">
-            <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
-            <input type="text" name="nome" class="nome" placeholder="Nickname">
-            <input type="password" name="password" class="newpassword" placeholder="Nova senha">
-            <input type="password" name="password" class="repitpassword" placeholder="Confirme a senha">
-            <input type="button" value="Cadastrar" class="cadastrar button" onclick="novoCadastro()">
-            <p>Já é cadastrado? <span onclick="irParaLogin()">Fazer login</span></p>
+        <div class="aplicativo-entrar novo-cadastro none">
+            <div class="cadastro entrar">
+                <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
+                <input type="text" name="nome" class="nome" placeholder="Nickname">
+                <input type="password" name="password" class="newpassword" placeholder="Nova senha">
+                <input type="password" name="password" class="repitpassword" placeholder="Confirme a senha">
+                <input type="button" value="Cadastrar" class="cadastrar button" onclick="novoCadastro()">
+                <p>Já é cadastrado? <span onclick="irParaLogin()">Fazer login</span></p>
+            </div>
         </div>
-    </div>
-    <div class="aplicativo-entrar cadastro-concluido none">
-        <div class="concluido entrar">
-            <ion-icon name="checkmark-circle-outline"></ion-icon> <!-- Check -->
-            <h1>cadastro concluído</h1>
-            <span onclick="fazerPrimeiroLogin()">Voltar ao Login</span>
+        <div class="aplicativo-entrar cadastro-concluido none">
+            <div class="concluido entrar">
+                <ion-icon name="checkmark-circle-outline"></ion-icon> <!-- Check -->
+                <h1>cadastro concluído</h1>
+                <span onclick="fazerPrimeiroLogin()">Voltar ao Login</span>
+            </div>
         </div>
-    </div>
-    <div class="alerta none">
+        <div class="alerta none">
         
-    </div>
-    <div class="aplicativo-chat none">
-        <header class="top">
-            <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
-            <ion-icon name="people"></ion-icon> <!-- people -->
-        </header>
-        <main class="chat">
-
-        </main>
-        <footer class="messenge">
-            <input type="text" name="send-messenge" class="send-messenge" placeholder="Escreva aqui...">
-            <ion-icon name="paper-plane-outline"></ion-icon> <!-- Share -->
-        </footer>
+        </div>
+        <div class="aplicativo-chat none">
+            <header class="top">
+                <img src="./docs/images/logo.svg" alt="logo Bate-Papo do Uol" class="logotipo">
+                <ion-icon name="people"></ion-icon> <!-- people -->
+            </header>
+            <main class="chat">
+            </main>
+            <footer class="messenge">
+                <input type="text" name="send-messenge" class="send-messenge" placeholder="Escreva aqui...">
+                <ion-icon name="paper-plane-outline"></ion-icon> <!-- Share -->
+            </footer>
+        </div>
     </div>
 
     <script src="scripts/src.js"></script>
