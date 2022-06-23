@@ -1,10 +1,12 @@
 :root { /*  Paleta de cores         */
     --branco: #FAFAFA;
+    --branco-sobretom: #f0f0f0;
     --preto: #141414;
     --link: #0000AA;
     --verde: #00D800;
     --input: #ECECEC;
     --button: #DBDBDB;
+    --shadow: #747474;
 }
 
 :root { /*  Hover                   */

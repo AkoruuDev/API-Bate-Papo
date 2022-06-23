@@ -12,6 +12,8 @@ function irParaNovoCadastro() {
 }
 
 function irParaLogin() {
+    conferirAlerta();
+
     let paginas = document.querySelectorAll(".aplicativo-entrar");
     paginaEntrar = paginas[0];
     paginaCadastro = paginas[1];
@@ -57,13 +59,13 @@ function lerDados() {
 }
 
 function validarCadastro(novoUsuario) {
-    let msg = 'Preencha todos os campos.\nPor favor, preencha:\n\n';
+    let mensagem = '<p class="mensagem">Faltaram campos.<br>Por favor, preencha:</p>';
     
     if (novoUsuario.nome == '') {
-        msg += 'Seu nickname\n'
+        mensagem += '<p>Seu nickname</p>'
     }
     if (novoUsuario.password == '') {
-        msg += 'Senha\n'
+        mensagem += '<p>Senha</p>'
     }
 
     let conferirSenha = document.querySelector(".repitpassword").value;
@@ -71,15 +73,51 @@ function validarCadastro(novoUsuario) {
         if ((novoUsuario.nome != '') && conferirSenha == novoUsuario.password) {
             return true;
         } else {
-            msg = "As senhas não coicidem";
+            mensagem = "<p>As senhas não coicidem</p>";
         }
     } else {
-        msg += 'Campo "Repita senha"'
+        mensagem += '<p>Confirmar senha</p>'
     }
     if (novoUsuario.nome == '' || novoUsuario.password == '' || conferirSenha != novoUsuario.password) {
-        alert(msg);
+        let alerta = document.querySelector(".alerta")
+        alerta.innerHTML = "";
+        mensagem += `
+            <div class="buttons">
+                <div class="tentar-denovo" onclick="mostrarAlerta()">Tentar denovo</div>
+            </div>
+        `
+        alerta.innerHTML += mensagem;
+        mostrarAlerta();
         return false;
     }
 
     return true;
+}
+
+
+function mostrarAlerta() {
+    document.querySelector(".alerta").classList.toggle("none");
+}
+
+function conferirAlerta() {
+    let alerta = document.querySelector(".alerta");
+    if (alerta.classList.toggle("none").value) {
+        alerta.classList.remove("none");
+    }
+}
+
+function alertaUsuarioExistente() {
+    let alerta = document.querySelector(".alerta");
+    let usuario = document.querySelector(".nome").value;
+    alerta.innerHTML = "";
+    mensagem = `
+        <p class="mensagem">O usuário <span>${usuario}</span> que você escolheu já existe, por favor, escolha outro Nickname ou volte para o Login</p>
+        <div class="buttons">
+            <div class="login" onclick="irParaLogin()">Login</div>
+            <div class="tentar-denovo" onclick="mostrarAlerta()">Tentar denovo</div>
+        </div>
+    `
+    alerta.innerHTML += mensagem
+
+    mostrarAlerta();
 }

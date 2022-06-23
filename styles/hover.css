@@ -1,3 +1,7 @@
 .entrar .button:hover {
     background-color: var(--hover-button);
 }
+
+.buttons div:hover {
+    background-color: var(--hover-button);
+}
