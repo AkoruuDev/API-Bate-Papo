@@ -12,3 +12,9 @@
 :root { /*  Hover                   */
     --hover-button: #8C8C8C;
 }
+
+:root { /*  Mensagens               */
+    --mensagem-padrão: #fdfdfd;
+    --mensagem-reservada: #ffd0d0;
+    --entrou-saiu: #cac7c7;
+}
