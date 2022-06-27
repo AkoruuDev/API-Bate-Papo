@@ -101,17 +101,25 @@ function usuarioPermaneceLogado() {
     const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", usuarioOnline);
 }
 
+function conferirUsuarioCadastrado() {
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    promise.then(conferirUsers);
+    promise.catch(tratarErro);
+}
+
 function conferirUsers(resposta) {
     let users = resposta.data;
-
-    for (let i; i < users.length; i ++) {
-        if (user == users[0]) {
-            alert("Calma jovem gafanhoto!");
+    let i = 0;
+    while (i < users.length) {
+        if (user === users[i]) {
+            tratarErro(400);
         } else {
-            alert("Ben venido");
+            
         }
+        i++
     }
 }
+
 
 // Funções de envio das mensagens
 const user = nomearUsuario();
@@ -119,7 +127,6 @@ const user = nomearUsuario();
 function nomearUsuario() {
     // Pega o nome do usuário e salva na variável global user
     const user = prompt('Qual seu lindo nome?');
-    let name;
 
     const nome = {
         name: user
@@ -128,14 +135,8 @@ function nomearUsuario() {
     
     promise.then(conferirUsuarioCadastrado)
     promise.catch(tratarErro);
-
+    
     return user;
-}
-
-function conferirUsuarioCadastrado() {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
-    promise.then(conferirUsers);
-    promise.catch(tratarErro);
 }
 
 function enviarMensagem() {
@@ -199,10 +200,14 @@ function EscreverMensagemDeErro(status) { // Precisa conferir
     //  Função chamada pela f tratarErro()
     let mensagemDeErro = "";
     
-    if (status != 200) {
+    if (status == 200) {
         mensagemDeErro = `
         ${status}
-        `
+        `;
+    } else if (status == 400) {
+        mensagemDeErro = `
+        O usuario ${user} já está sendo usado, por favor, escolha outro
+        `;
     }
 
     return mensagemDeErro;
