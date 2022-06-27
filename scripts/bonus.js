@@ -1,3 +1,4 @@
+/*
 function irParaNovoCadastro() {
     let paginas = document.querySelectorAll(".aplicativo-entrar");
     paginaEntrar = paginas[0];
@@ -117,3 +118,4 @@ function alertaUsuarioExistente() {
 
     mostrarAlerta();
 }
+*/

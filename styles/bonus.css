@@ -88,7 +88,11 @@
     align-items: center;
 
     position: absolute;
-    top: 0;
+    top: 110px;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .alerta .mensagem{
