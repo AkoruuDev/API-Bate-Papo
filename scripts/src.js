@@ -3,6 +3,7 @@ let mensagem;
 buscarMensagensDoServidor();
 setInterval(buscarMensagensDoServidor, 3000);
 puxarMensagensParaOFinaldaPagina();
+setTimeout(setInterval(usuarioPermaneceLogado, 5000), 4000);
 
 // Funções do sistema
 function buscarMensagensDoServidor(){
@@ -92,6 +93,26 @@ function puxarMensagensParaOFinaldaPagina() {
     chat.scrollIntoView();
 }
 
+function usuarioPermaneceLogado() {
+    const usuarioOnline = {
+        name: user
+    }
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", usuarioOnline);
+}
+
+function conferirUsers(resposta) {
+    let users = resposta.data;
+
+    for (let i; i < users.length; i ++) {
+        if (user == users[0]) {
+            alert("Calma jovem gafanhoto!");
+        } else {
+            alert("Ben venido");
+        }
+    }
+}
+
 // Funções de envio das mensagens
 const user = nomearUsuario();
 
@@ -112,7 +133,9 @@ function nomearUsuario() {
 }
 
 function conferirUsuarioCadastrado() {
-    console.log("BenVenido");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
+    promise.then(conferirUsers);
+    promise.catch(tratarErro);
 }
 
 function enviarMensagem() {
