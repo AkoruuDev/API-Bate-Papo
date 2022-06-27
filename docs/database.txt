@@ -21,11 +21,11 @@ Database
         Data de Inicio
             21-06-2022
         Data de finalização
-            --/--/----
+            27-06-2022
         Data de entrega
             27-06-2022
         Produção
-            00:00:00:00
+            20:52:00:00
 
 Tecnologias
     HTML 5

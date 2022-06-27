@@ -45,7 +45,7 @@ function mostrarMensagensNoChat(mensagem){
                         <span>(${time})</span>
                     </div>
                     <div>
-                        <span><strong>${from}</strong></span>
+                        <span data-identifier="participant"><strong>${from}</strong></span>
                         ${text}
                     </div>
                 </li>`;
@@ -59,7 +59,7 @@ function mostrarMensagensNoChat(mensagem){
                         <span>(${time})</span>
                     </div>
                     <div>
-                        <span><strong>${from}</strong></span>
+                        <span data-identifier="participant"><strong>${from}</strong></span>
                          para 
                         <span><strong>${to}</strong>:
                         </span><span>${text}</span>
@@ -75,7 +75,7 @@ function mostrarMensagensNoChat(mensagem){
                         <span>(${time})</span>
                     </div>
                     <div>
-                        <span><strong>${from}</strong></span>
+                        <span data-identifier="participant"><strong>${from}</strong></span>
                          reservadamente para 
                         <span><strong>${to}</strong>:
                         </span><span>${text}</span>
