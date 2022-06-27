@@ -1,56 +1,20 @@
-//  Tudo certo por aqui
-
-function pegarHoras() {
-    //  Pega as horas:minutos:segundos atual
-    const time = new Date();
-    let HH = time.getHours();
-    let MM = time.getMinutes();
-    let SS = time.getSeconds();
-
-    const formatTime = formatarHoras(HH, MM, SS);
-    return formatTime;
-}
-
-function formatarHoras(HH, MM, SS) {
-    //  Pega as var e as deixam com duas casas
-    let fHH = HH.toFixed();
-    let fMM = MM.toFixed();
-    let fSS = SS.toFixed();
-
-    if (fHH.length < 2) {
-        fHH = '0' + fHH;
-    }
-
-    if (fMM.length < 2) {
-        fMM = '0' + fMM;
-    }
-
-    if (fSS.length < 2) {
-        fSS = '0' + fSS;
-    }
-
-    const formatTime = `${fHH}:${fMM}:${fSS}`;
-    return formatTime;
-}
-
-
-
-// Dá uma olhada aqui, boi
-
 let mensagem;
 
 buscarMensagensDoServidor();
 setInterval(buscarMensagensDoServidor, 3000);
-const chat = document.querySelector('.listaDeMensagens');
-chat.scrollIntoView();
+puxarMensagensParaOFinaldaPagina();
 
+// Funções do sistema
 function buscarMensagensDoServidor(){
+    // OnLoad
+    // Pega todas as mensagens salvas no servidor
     const promise = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
-    
     promise.then(tratarSucesso);
 }
 
 function tratarSucesso(resposta){
+    //  Verifica o status da API
+    //  Função chamada pela f buscarMensagensDoServidor()
     let status = resposta.status;
     if (status != 200) {
         tratarErro(status);
@@ -61,6 +25,8 @@ function tratarSucesso(resposta){
 }
 
 function mostrarMensagensNoChat(mensagem){
+    // Mostra na tela do chat as mensagens
+    // Função chamada pela f tratarSucesso(resposta)
     const chatDeMensagens = document.querySelector(".listaDeMensagens");   
     chatDeMensagens.innerHTML = "";
     const msg = mensagem.length;
@@ -119,30 +85,60 @@ function mostrarMensagensNoChat(mensagem){
     }
 }
 
+function puxarMensagensParaOFinaldaPagina() {
+    // OnLoad
+    // Deixa as ultimas mensagens visiveis
+    const chat = document.querySelector('.listaDeMensagens');
+    chat.scrollIntoView();
+}
+
+// Funções de envio das mensagens
+function pegarHoras() {
+    //  Pega as horas:minutos:segundos atual
+    const time = new Date();
+    let HH = time.getHours();
+    let MM = time.getMinutes();
+    let SS = time.getSeconds();
+
+    const formatTime = formatarHoras(HH, MM, SS);
+    return formatTime;
+}
+
+function formatarHoras(HH, MM, SS) {
+    //  Pega as var e as deixam com duas casas
+    //  Função chamada pela f pegarHoras()
+    let fHH = HH.toFixed();
+    let fMM = MM.toFixed();
+    let fSS = SS.toFixed();
+
+    if (fHH.length < 2) {
+        fHH = '0' + fHH;
+    }
+
+    if (fMM.length < 2) {
+        fMM = '0' + fMM;
+    }
+
+    if (fSS.length < 2) {
+        fSS = '0' + fSS;
+    }
+
+    const formatTime = `${fHH}:${fMM}:${fSS}`;
+    return formatTime;
+}
+
+// Area de Tratamento de erros
 function tratarErro(status) {
     let mensagemDeErro = EscreverMensagemDeErro(status);
     prepararAlertadeErro(mensagemDeErro);
 }
 
-function prepararAlertadeErro(mensagemDeErro) {
-    let alerta = document.querySelector(".alerta")
-    alerta.innerHTML = "";
-    alerta.innerHTML += mensagemDeErro;
-    mostrarAlertaErro();
-}
-
-function mostrarAlertaErro() {
-    document.querySelector(".alerta").classList.remove("none");
-}
-
-function tirarAlertaErro() {
-    document.querySelector(".alerta").classList.add("none");
-}
-
 function EscreverMensagemDeErro(status) {
+    //  Traduz o status de erro para o Usuario
+    //  Função chamada pela f tratarErro()
     let mensagemDeErro = "";
     
-    if (status = 200) {
+    if (status != 200) {
         mensagemDeErro = `
         ${status}
         `
@@ -151,6 +147,28 @@ function EscreverMensagemDeErro(status) {
     return mensagemDeErro;
 }
 
+function prepararAlertadeErro(mensagemDeErro) {
+    //  Escreve na tela de alerta a mensagem
+    //  Função chamada pela f tratarErro()
+    let alerta = document.querySelector(".alerta")
+    alerta.innerHTML = "";
+    alerta.innerHTML += mensagemDeErro;
+    mostrarAlertaErro();
+}
+
+function mostrarAlertaErro() {
+    //  Mostra na tela a caixa de alerta
+    //  Função chamada pela f prepararAlertadeErro(mensagemDeErro)
+    document.querySelector(".alerta").classList.remove("none");
+}
+
+function tirarAlertaErro() {
+    //  Tira da tela a caixa de alerta
+    document.querySelector(".alerta").classList.add("none");
+}
+
+
+// Dá uma olhada aqui, boi
 entrarsala();
 
 function entrarsala(){
