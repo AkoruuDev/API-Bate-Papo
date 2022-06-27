@@ -93,6 +93,44 @@ function puxarMensagensParaOFinaldaPagina() {
 }
 
 // Funções de envio das mensagens
+const user = nomearUsuario();
+
+function nomearUsuario() {
+    // Pega o nome do usuário e salva na variável global user
+    const user = prompt('Qual seu lindo nome?');
+    let name;
+
+    const nome = {
+        name: user
+    }
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nome);
+    
+    promise.then(conferirUsuarioCadastrado)
+    promise.catch(tratarErro);
+
+    return user;
+}
+
+function conferirUsuarioCadastrado() {
+    console.log("BenVenido");
+}
+
+function enviarMensagem() {
+    const mensagemParaEnviar = document.querySelector(".send-messenge").value;
+
+    novaMensagemParaOServidor = {
+        from: user,
+        to: 'Todos',
+        text: mensagemParaEnviar,
+        type: 'message'
+    }
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", novaMensagemParaOServidor);
+
+    promise.then(buscarMensagensDoServidor);
+    promise.catch(tratarErroEFazerLogin);
+}
+
 function pegarHoras() {
     //  Pega as horas:minutos:segundos atual
     const time = new Date();
@@ -133,7 +171,7 @@ function tratarErro(status) {
     prepararAlertadeErro(mensagemDeErro);
 }
 
-function EscreverMensagemDeErro(status) {
+function EscreverMensagemDeErro(status) { // Precisa conferir
     //  Traduz o status de erro para o Usuario
     //  Função chamada pela f tratarErro()
     let mensagemDeErro = "";
@@ -167,6 +205,11 @@ function tirarAlertaErro() {
     document.querySelector(".alerta").classList.add("none");
 }
 
+function tratarErroEFazerLogin() { // Precisa conferir
+    alert("Parece que você não está mais logado, faça o login novamente!")
+    window.location.reload()
+}
+
 
 // Dá uma olhada aqui, boi
 entrarsala();
@@ -174,115 +217,3 @@ entrarsala();
 function entrarsala(){
     
 }
-
-function mostrarMensagemNaTela() {
-    const mensagemParaEnviar = document.querySelector(".send-messenge").value;
-
-    novaMensagemParaOServidor = {
-        from: '                 ',
-        to: 'Todos',
-        text: mensagemParaEnviar,
-        type: 'message',
-        time: '02:40:45'
-    }
-
- 
-    chatDeMensagens.innerHTML = "";
-
-    const msg = mensagem.length;
-    const from = (mensagem[i].from);
-    const text = (mensagem[i].text);
-    const time = (mensagem[i].time);
-    const to = (mensagem[i].to);
-    const type = (mensagem[i].type);
-
-
-
-    const horas = this.pegarHoras();
-    const remetente = listaDeUsuarios[0].value;
-    const destinatario = listaDeUsuarios.name;
-    const textoParaEnviar = this.salvarMensagem();
-
-    const mensagem = `
-    <div class="suaMensagemAqui mensagemPadrao">
-        <p>(${horas}) 
-        <strong>${remetente}</strong> 
-        <span class="reservadamente none">reservadamente</span> 
-        para 
-        <strong>${destinatario}</strong>: 
-        ${textoParaEnviar}</p>
-    </div>
-    `
-
-    verificarPrivacidade(this);
-    
-    let chat = document.querySelector(".listaDeMensagens");
-    chat.innerHTML += mensagem;
-
-    chat.scrollIntoView();
-}
-
-
-
-function enviarMensagem() {
-    var chatDeConversas = document.querySelector(".listaDeMensagens");
-    chatDeConversas.innerHTML = "Carregando mensagens...";
-    
-    salvarMensagemNoServidor();
-    mostrarMensagemNaTela();
-}
-
-function salvarMensagem() {
-    const mensagem = document.querySelector(".send-messenge").value;
-    return mensagem;
-}
-
-function salvarMensagemNoServidor() {
-
-    const novaMensagem = {
-        from: `${listaDeUsuarios[0]}`,
-        to: `${listaDeUsuarios[1]}`,
-        text: `${mensagemParaEnviar}`,
-        type: `${tipoDeMensagem()}`
-    };
-
-    let promise = axios.post(
-    'https://mock-api.driven.com.br/api/v6/uol/messages',
-    novaMensagem
-    );
-
-    let mensagemParaEnviar = document.querySelector(".send-messenge").value;
-    promise.then(mostrarMensagemNaTela);
-    promise.catch(tratarErro);
-}
-
-/*
-// variaveis globais
-
-    let listaDeUsuarios = [];
-    let listaDeMensagens;
-    let ver = false;
-
-// function from user
-function mostrarMensagemNaTela(mensagens) {
-    chatdoBatePapo = document.querySelector(".listaDeMensagens");
-    chatdoBatePapo = mensagens;
-}
-
-function enviarMensagem() {
-    const novaMensagem = {
-        from: '',
-        to: '',
-        text: '',
-        type: '',
-        time: ''
-    }
-
-    const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', novaMensagem);
-    promise.then(buscarMensagensDoServidor);
-    promise.catch(tratarErro);
-
-    mostrarMensagemNaTela();
-}
-
-*/
